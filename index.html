@@ -1,26 +1,121 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gamz AI</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#111827;
+color:white;
+display:flex;
+flex-direction:column;
+height:100vh;
+}
+header{
+background:#1f2937;
+padding:15px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+#chat{
+flex:1;
+overflow:auto;
+padding:15px;
+}
+.msg{
+padding:12px;
+margin:10px 0;
+border-radius:12px;
+max-width:80%;
+}
+.user{
+background:#2563eb;
+margin-left:auto;
+}
+.ai{
+background:#374151;
+margin-right:auto;
+}
+.bottom{
+display:flex;
+padding:10px;
+background:#1f2937;
+}
+input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+button{
+margin-right:10px;
+padding:12px 18px;
+background:#10b981;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+</style>
 </head>
-<body style="background:#111;color:white;font-family:sans-serif;text-align:center;padding:40px;">
 
-<h1>🤖 Gamz AI</h1>
-<p>أهلًا بيك! هذا أول إصدار من گامز AI.</p>
+<body>
 
-<input id="msg" placeholder="اكتب رسالتك..." style="padding:10px;width:80%;max-width:300px;">
-<br><br>
+<header>🤖 Gamz AI</header>
 
-<button onclick="reply()" style="padding:10px 20px;">إرسال</button>
+<div id="chat">
+<div class="msg ai">
+هلا بيك! أني Gamz AI 😎
+</div>
+</div>
 
-<p id="res"></p>
+<div class="bottom">
+<button onclick="send()">إرسال</button>
+<input id="text" placeholder="اكتب رسالتك...">
+</div>
 
 <script>
-function reply(){
-let m=document.getElementById("msg").value;
-document.getElementById("res").innerHTML="😂 بعدني قيد التطوير، بس استلمت: "+m;
+function send(){
+
+let input=document.getElementById("text");
+
+if(input.value=="") return;
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div class="msg user">
+${input.value}
+</div>
+`;
+
+let r=[
+"😂 والله قوية.",
+"زين لا تتحمس هواي.",
+"هاي سالفة تضحك.",
+"تره مو كلشي تعرفه 😏",
+"ها استمر اسمعك.",
+"والله عجيب انت 😂"
+];
+
+let reply=r[Math.floor(Math.random()*r.length)];
+
+setTimeout(()=>{
+chat.innerHTML+=`
+<div class="msg ai">
+${reply}
+</div>
+`;
+chat.scrollTop=chat.scrollHeight;
+},500);
+
+input.value="";
 }
 </script>
 
