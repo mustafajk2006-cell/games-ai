@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamz AI</title>
+</head>
+<body style="background:#111;color:white;font-family:sans-serif;text-align:center;padding:40px;">
+
+<h1>🤖 Gamz AI</h1>
+<p>أهلًا بيك! هذا أول إصدار من گامز AI.</p>
+
+<input id="msg" placeholder="اكتب رسالتك..." style="padding:10px;width:80%;max-width:300px;">
+<br><br>
+
+<button onclick="reply()" style="padding:10px 20px;">إرسال</button>
+
+<p id="res"></p>
+
+<script>
+function reply(){
+let m=document.getElementById("msg").value;
+document.getElementById("res").innerHTML="😂 بعدني قيد التطوير، بس استلمت: "+m;
+}
+</script>
+
+</body>
+</html>
