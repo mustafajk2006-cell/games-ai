@@ -95,25 +95,34 @@ ${input.value}
 </div>
 `;
 
-let r=[
-"😂 والله قوية.",
-"زين لا تتحمس هواي.",
-"هاي سالفة تضحك.",
-"تره مو كلشي تعرفه 😏",
-"ها استمر اسمعك.",
-"والله عجيب انت 😂"
-];
+fetch(https://gamz-ai.haidders09.workers.dev/{
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: input.value
+  })
+})
+.then(res => res.json())
+.then(data => {
 
-let reply=r[Math.floor(Math.random()*r.length)];
-
-setTimeout(()=>{
-chat.innerHTML+=`
+chat.innerHTML+=
 <div class="msg ai">
-${reply}
+${data.reply}
 </div>
-`;
+;
+
 chat.scrollTop=chat.scrollHeight;
-},500);
+
+})
+.catch(()=>{
+chat.innerHTML+=
+<div class="msg ai">
+صار خطأ بالاتصال 😅
+</div>
+;
+});
 
 input.value="";
 }
